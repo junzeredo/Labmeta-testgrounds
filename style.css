@@ -1,1 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
+*{
+    --lm_white: #F3EFF5;
+    --lm_black: #020402;
+    margin: 0;
+    color: var(--lm_white);
+    background-size: 100%;
+    font-family: "JetBrains Mono";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.6px;
+}
+
+body{
+    background: var(--lm_black);
+}
+
+section{
+    padding: 6vw;
+}
+
+header{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 0%, rgba(71, 71, 71, 0.60) 100%);
+    backdrop-filter: blur(20px);
+    display: flex;
+    position: absolute;
+    top: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+.navbar_logo{
+    cursor: pointer;
+    padding-left: 6vw;
+}
+.barra_de_nav ul{
+    list-style-type: none;
+}
+.barra_de_nav a{
+    line-height: normal;
+    text-align: center;
+    text-decoration: none;
+    padding: 2vw;
+    display: block;
+}
+.barra_de_nav li{
+    float: left;
+}
+.barra_de_nav a:hover{
+    text-decoration: underline;
+}
+
+
+h1{
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -5.12px;
+    text-transform: uppercase;
+}
+
+hr {
+    border: 0;
+    height: 4px;
+    background-color: var(--lm_white);
+}
