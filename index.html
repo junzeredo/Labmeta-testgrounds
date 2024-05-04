@@ -13,7 +13,23 @@
 
 
 <body>
-    <header>
+
+    <section id="test">
+        <header class="nav_landing_page">
+            <nav class="barra_de_nav">
+                <ul>
+                    <li><a href="">Sobre Nós</a></li>
+                    <li><a href="">Projetos</a></li>
+                    <li><a href="">Eventos</a></li>
+                    <li><a href="">Artigos</a></li>
+                    <li><a href="">Equipe</a></li>
+                    <li><a href="">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+    </section>
+
+    <header class="nav_principal">
         <img class="navbar_logo" src="navbar_logo.svg" alt="logo LabMeta">
         <nav class="barra_de_nav">
             <ul>
@@ -27,7 +43,6 @@
         </nav>
     </header>
 
-<!-- precisa de selection? -->
     <section id="sobre">
         <div class="container">
             <div class="text_box">
@@ -52,6 +67,43 @@
             </div>
         </div>
     </section>
+
+
+<!------ CENA 3D ------>
+    <script src="index.js"></script>
+    <script type="module">
+        import * as THREE from './js/three.module.js';
+import { APP } from './js/app.js';
+
+// Verifica se o dispositivo é um celular
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}
+
+// Se não for um celular, executa o código
+if (!isMobileDevice()) {
+    window.THREE = THREE; // Used by APP Scripts.
+
+    var loader = new THREE.FileLoader();
+    loader.load( 'app.json', function ( text ) {
+
+        var player = new APP.Player();
+        player.load( JSON.parse( text ) );
+        player.setSize( window.innerWidth, window.innerHeight );
+        player.play();
+
+        var containerDiv = document.getElementById('test'); 
+        containerDiv.appendChild( player.dom );
+
+        window.addEventListener( 'resize', function () {
+            player.setSize( window.innerWidth, window.innerHeight );
+        });
+
+    });
+}
+
+    </script>
+
 
 </body>
 </html>
