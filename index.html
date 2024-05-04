@@ -13,8 +13,8 @@
 
 
 <body>
-
-    <section id="test">
+    <!--cena 3D--------------------------------------------------------->
+    <section id="test"> 
         <header class="nav_landing_page">
             <nav class="barra_de_nav">
                 <ul>
@@ -28,9 +28,9 @@
             </nav>
         </header>
     </section>
-
+    <!--barra de navegacao---------------------------------------------->
     <header class="nav_principal">
-        <img class="navbar_logo" src="navbar_logo.svg" alt="logo LabMeta">
+        <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
         <nav class="barra_de_nav">
             <ul>
                 <li><a href="">Sobre Nós</a></li>
@@ -42,8 +42,8 @@
             </ul>
         </nav>
     </header>
-
-    <section id="sobre">
+    <!--sobre----------------------------------------------------------->
+    <section id="sobre"> 
         <div class="container">
             <div class="text_box">
                 <h1>Sobre Nós</h1>
@@ -62,14 +62,48 @@
             </div>
             <div class="video">
                 <video muted autoplay loop>
-                    <source src="video.mp4" type="video/mp4">
+                    <source src="assets/video.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
     </section>
+    <!--artigos--------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <p id="artigos_importados">artigos vão aqui</p>
+
+    <script>
+        $(document).ready(function(){
+            $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
+                if (status == "error") {
+                    console.error("Error loading the file: " + xhr.status + " " + xhr.statusText);
+                } else {
+                    console.log('File loaded successfully');
+
+                    var content = $(this).text(); // Get the text content of the loaded file
+                    var lines = content.split('\n'); // Split the content into lines based on newline
+                    var styledContent = ''; // Variable to store styled content
+                    for (var i = 0; i < lines.length; i++) {
+                        // Check if the line number is a multiple of 4 or 3
+                        if ((i + 1) % 2 === 0) {
+                        styledContent += '<span class="second">' + lines[i] + '</span><br>'; // Style every second line
+                        } else if ((i + 1) % 3 === 0) {
+                        styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
+                        } else {
+                        styledContent += '<span>' + lines[i] + '</span><br>'; // Default styling for other lines
+                        }
+                    }
+                    $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
+            }
+        });
+    });
+    </script>
+
+    </section>
 
 
-<!------ CENA 3D ------>
+
+<!------ CENA 3D ------------------------------------------------------->
     <script src="index.js"></script>
     <script type="module">
         import * as THREE from './js/three.module.js';
