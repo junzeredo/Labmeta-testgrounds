@@ -3,11 +3,13 @@
 *{
     --lm_white: #F3EFF5;
     --lm_black: #020402;
+    --edge-roundness: 10px;
+
     margin: 0;
     color: var(--lm_white);
     background-size: 100%;
     font-family: "JetBrains Mono";
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -17,22 +19,23 @@
 body{
     background: var(--lm_black);
 }
-
 section{
-    padding: 6vw;
+    padding: 4vh 4vw;
 }
 
-/* ---barra de nav--- */
+/* -------barra de nav------- */
 header{
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 0%, rgba(71, 71, 71, 0.60) 100%);
     backdrop-filter: blur(20px);
     display: flex;
-    position: absolute;
-    top: 100%;
-    padding: 0px;
-    margin: 0px;
+    position: sticky;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    min-height: 100px;
 }
 .navbar_logo{
+    width: 150px;
     cursor: pointer;
     padding-left: 6vw;
 }
@@ -53,7 +56,7 @@ header{
     text-decoration: underline;
 }
 
-/* ---h1--- */
+/* -------h1------- */
 h1{
     font-size: 64px;
     font-style: normal;
@@ -66,24 +69,36 @@ h1{
     border: 0;
     height: 4px;
     background-color: var(--lm_white);
+    margin-bottom: 50px;
 }
 
-/* ---sobre--- */
+/* -------sobre------- */
 .container{
     display: flex;
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+    flex-direction: col;
+    gap: 2 vw;
+    align-self: stretch;
 }
 .text_box{
     overflow-wrap: break-word;
-    inline-size: 100%;
+    inline-size: 50%;
+    flex: 1;
+    padding-right: 4vw;
+    padding-bottom: 50px;
 }
 .video{
-    height: 574px;
-    min-width: 540px;
-    max-width: 988px;
-    max-height: 574px;
-    flex: 1 0 0;
-    border-radius: var(--edge-roundness, 10px);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1.618;
+    display: block;
+    border-radius: var(--edge-roundness);
 }
+.video video{
+    border-radius: var(--edge-roundness);
+    min-width: 400px;
+    max-width: 100%;
+}
+/* --------artigos-------- */
