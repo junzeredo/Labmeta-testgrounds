@@ -33,7 +33,7 @@ body{
 /* -------section margins------- */
 section{
     /* cada section (sobre, eventos, projetos, artigos, membros, etc...) vai conter margens de 4vh 4vw */
-    margin: 4vh 4vw;
+    margin: 8vh 4vw;
 }
 
 
@@ -41,7 +41,7 @@ section{
 h1{
     font-size: 64px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     line-height: normal;
     letter-spacing: -5.12px;
     text-transform: uppercase;
@@ -177,10 +177,49 @@ h1{
     color: var(--lm_blue)
 }
 
+/* --------projetos-------- */
+.carouselview{
+    display: flex;
+    gap: 4%;
+}
+.scrolling-wrapper {
+    &::-webkit-scrollbar {
+        display: none;
+      }
+    scrollbar-width: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 4%;
+    display: flex;
+    width: fit-content;
+    width: 80%;
+    scroll-behavior: smooth;
+    overflow: auto;
+    flex-wrap: nowrap;
+  }
+
+.card{
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    max-width: 24vw;
+    min-width: 200px;
+    height: 50vh;
+    padding: 50px 25px;
+    border-radius: var(--edge-roundness, 10px);
+    background: linear-gradient(180deg, rgba(2, 4, 2, 0.50) 0%, rgba(129, 44, 229, 0.50) 100%);
+}
+.card p{
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    inline-size: 100%;
+    flex: 1;
+}
+
 
 /* --------artigos-------- */
-.artigos{
-    max-width: 83.82%;
+#artigos{
+    max-width: 700px;
+    padding-top: 8vh;
 }
 .article_title{
     display: flex;
