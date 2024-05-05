@@ -4,6 +4,8 @@
     --lm_white: #F3EFF5;
     --lm_black: #020402;
     --lm_purple:#812CE5;
+    --lm_green: #4BDBAB;
+    --lm_blue: #00A7E1;
     --edge-roundness: 10px;
 
     margin: 0;
@@ -16,22 +18,48 @@
     line-height: normal;
     letter-spacing: 0.6px;
 }
-
+/* -------fundo------- */
 body{
     background: var(--lm_black);
 }
+
+::selection {
+    background-color: var(--lm_purple);
+    mix-blend-mode: difference;
+    color: var(--lm_white);
+}
+
+
+/* -------section margins------- */
 section{
+    /* cada section (sobre, eventos, projetos, artigos, membros, etc...) vai conter margens de 4vh 4vw */
     margin: 4vh 4vw;
 }
-/* --------CENA 3D-------- */
-#test{
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden
+
+
+/* -------h1------- */
+h1{
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -5.12px;
+    text-transform: uppercase;
 }
+@keyframes scale_wscroll{
+    to {scale: 1 1;}
+}
+.h1_divider {
+    border: 0;
+    height: 2px;
+    background-color: var(--lm_white);
+    margin-bottom: 50px;
+    animation: scale_wscroll;
+    scale: 0 1;
+    transform-origin: left;
+    animation-timeline: view(100px);
+}
+
 
 /* -------barra de nav------- */
 .nav_landing_page{
@@ -57,18 +85,17 @@ section{
     align-items: center;
     top: 0;
     width: 100%;
-    min-height: 100px;
+    height: 80px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 0%, rgba(53, 53, 53, 0.6) 100%);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(40px);
     animation: appear_wscroll;
-    animation-timeline: view(10vh 5vh);
+    animation-timeline: view(100vh 0);
 }
 .nav_principal:hover{
     opacity: 1;
 }
-
 .navbar_logo{
-    width: 150px;
+    height: 1.5em;
     cursor: pointer;
     padding-left: 4vw;
 }
@@ -89,26 +116,22 @@ section{
 .barra_de_nav a:hover{
     text-decoration: underline;
 }
+@keyframes appear_wscroll{
+    from{ opacity: 0;}
+    to{opacity: 1;}
+}
 
-/* -------h1------- */
-h1{
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -5.12px;
-    text-transform: uppercase;
+
+/* --------CENA 3D-------- */
+#test{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden
 }
-.h1_divider {
-    border: 0;
-    height: 2px;
-    background-color: var(--lm_white);
-    margin-bottom: 50px;
-    animation: scale_wscroll;
-    scale: 0 1;
-    transform-origin: left;
-    animation-timeline: view(100px);
-}
+
 
 /* -------sobre------- */
 .container{
@@ -122,6 +145,7 @@ h1{
 }
 .text_box{
     overflow-wrap: break-word;
+    text-wrap: balance;
     inline-size: 50%;
     flex: 1;
     padding-right: 4vw;
@@ -140,23 +164,44 @@ h1{
     min-width: 400px;
     max-width: 100%;
 }
-/* --------artigos-------- */
-
-.second{
-    color: #4BDBAB;
-}
-
-.third{
-    color: #00A7E1;
+#sobrenos_1000plus{
+    font-size: 48px;
+    font-weight: 700;
     font-style: italic;
+    color: var(--lm_green);
+}
+#sobrenos_10plus{
+    font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--lm_blue)
 }
 
 
-@keyframes scale_wscroll{
-    to {scale: 1 1;}
+/* --------artigos-------- */
+.artigos{
+    max-width: 83.82%;
+}
+.article_title{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+.second{
+    color: var(--lm_blue);
+    line-height: 6vh;
+    width: fit-content;
+    font-weight: 600;
+    font-style: italic;
+    border-width: 1px;
+    border-style: solid;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+}
+.third{
+    color: var(--lm_green);
+    font-weight: 100;
 }
 
-@keyframes appear_wscroll{
-    from{background: var(--lm_black); opacity: 0;}
-    to{background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 0%, rgba(53, 53, 53, 0.6) 100%);opacity: 1;}
-}
+

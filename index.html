@@ -45,17 +45,20 @@
     <!--sobre----------------------------------------------------------->
     <section id="sobre"> 
         <div class="container">
-            <div class="text_box">
-                <h1>Sobre Nós</h1>
+            <div class="text_box"> <!--caixa de texto que segura a parte esquerda dos elementos-->>
+                <!-- os h1 e hr compoem o header principal -->
+                <h1>Sobre Nós</h1> 
                 <hr class="h1_divider">
                 <p>O Laboratório de Metaverso - LabMeta, vinculado à Universidade Federal do Paraná (UFPR), destaca-se ao oferecer assessoria em modelagem tridimensional e computacional, especializando-se em prototipagem virtual para diversos ambientes. Utilizando tecnologias como Realidade Virtual, Aumentada, Mista e escaneamento buscamos proporcionar experiências imersivas e interativas através da união entre pesquisa e desenvolvimento prático.</p>
+                <!-- um div para o 1000+... e 10+... reutilizando o class container -->
+                por ser um elemento 
                 <div class="container" style="gap: 4vw;">
                     <div style="flex: 1; margin-top: 50px;">
-                        <p><span style="font-size: 48px; font-weight: 700; font-style: italic; color: #4BDBAB;">1000</span><span style="font-size: 48px; font-weight: 700; font-style: italic; color: #4BDBAB;">+</span></p>
+                        <p id="sobrenos_1000plus">1000+</p>
                         <p style="font-size: 24px; color: #4BDBAB;">pessoas impactadas com nossas demonstrações</p>
                     </div>
                     <div style="flex: 1;">
-                        <p><span style="font-size: 48px; font-weight: 700; font-style: italic; color: #00A7E1;">10</span><span style="font-size: 48px; font-weight: 700; font-style: italic; color: #00A7E1;">+</span></p>
+                        <p id="sobrenos_10plus">10+</p>
                         <p style="font-size: 24px; color: #00A7E1;">artigos publicados</p>
                     </div>
                 </div>
@@ -67,12 +70,15 @@
             </div>
         </div>
     </section>
-    <!--artigos--------------------------------------------------------->
+<!--artigos--------------------------------------------------------->
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <p id="artigos_importados">artigos vão aqui</p>
-
-    <script>
+    <section class="artigos">
+        <h1>Publicações</h1>
+        <hr class="h1_divider">
+        <p id="artigos_importados">artigos vão aqui</p>
+    </section>
+    <script> // Style every second line
         $(document).ready(function(){
             $('#artigos_importados').load('assets/lista_artigos.txt', function(response, status, xhr) {
                 if (status == "error") {
@@ -90,7 +96,7 @@
                         } else if ((i + 1) % 3 === 0) {
                         styledContent += '<span class="third">' + lines[i] + '</span><br>'; // Style every third line
                         } else {
-                        styledContent += '<span>' + lines[i] + '</span><br>'; // Default styling for other lines
+                        styledContent += '<span class="article_title">' + lines[i] + '</span><br>'; // Default styling for other lines
                         }
                     }
                     $('#artigos_importados').html(styledContent); // Replace the content of the element with the styled content
@@ -137,7 +143,6 @@ if (!isMobileDevice()) {
 }
 
     </script>
-
 
 </body>
 </html>
