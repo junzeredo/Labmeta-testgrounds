@@ -199,11 +199,11 @@ h1{
 .card{
     scroll-snap-align: center;
     flex: 0 0 auto;
-    max-width: 24vw;
+    max-width: 20vw;
     min-width: 200px;
     height: 50vh;
     padding: 50px 25px;
-    margin-right: 20px;
+    margin-right: 1.5vw;
     border-radius: var(--edge-roundness, 10px);
     background: linear-gradient(180deg, rgba(2, 4, 2, 0.50) 0%, rgba(129, 44, 229, 0.50) 100%);
 }
@@ -213,6 +213,11 @@ h1{
     text-wrap: balance;
     inline-size: 100%;
     flex: 1;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -3.2px;
+    margin-bottom: 4vh;
 }
 
 .card-content{
