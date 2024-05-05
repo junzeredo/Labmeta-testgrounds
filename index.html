@@ -77,42 +77,7 @@
         <div class="carouselview">
             <button id="carousel-prev-button" class="carousel-prev-button"></button>
             <div class="scrolling-wrapper">
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
-                <div class="card">
-                    <h2>Card</h2>
-                    <!-- <img src="assets/projetos/img_1" alt=""> -->
-                </div>
+
             </div>
             <button id="carousel-next-button" class="carousel-next-button"></button>
         </div>
@@ -142,28 +107,45 @@
         });
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+        $(document).ready(function() {
+            const scrollingWrapper = $(".scrolling-wrapper");
 
-            // List of file names (replace with actual file names)
-            const fileNames = ["file1.txt", "file2.txt", "file3.txt"];
+            // Make an AJAX request to fetch the text files
+            $.ajax({
+                url: "/assets/projects", // Update the URL as per your folder structure
+                success: function(data) {
+                    // Iterate over the files
+                    $(data).find("a[href$='.txt']").each(function() {
+                        const filename = $(this).attr("href");
+                        // Extract the name of the file without extension
+                        const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
+                        // Make another AJAX request to get the content of each text file
+                        $.ajax({
+                            url: filename,
+                            dataType: "text",
+                            success: function(fileContent) {
+                                // Create a new card element
+                                const card = $("<div>").addClass("card");
+                                    
+                                // Set the content of the card to the text file content
+                                // card.text(fileContent);
 
-            // Function to create card for each file
-            function createCard(fileName) {
-                const card = document.createElement("div");
-                card.classList.add("card");
-
-                const h2 = document.createElement("h2");
-                h2.textContent = fileName;
-
-                // You can also load file content and display it within the card if needed
-
-                card.appendChild(h2);
-                scrollingWrapper.appendChild(card);
-            }
-
-            // Create cards for each file name
-            fileNames.forEach(createCard);
+                                // Create a header text with class and set it to the filename
+                                const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
+                        
+                                // Set the content of the card to the text file content
+                                const contentText = $("<p>").addClass("card-content").text(fileContent);
+                                
+                                // Append the header and content to the card
+                                card.append(headerText, contentText);
+                                
+                                // Append the card to the scrolling wrapper
+                                scrollingWrapper.append(card);
+                            }
+                        });
+                    });
+                }
+            });
         });
     </script>
     <!--artigos--------------------------------------------------------->
