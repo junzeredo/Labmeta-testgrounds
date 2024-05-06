@@ -108,9 +108,14 @@
         </div>
     </section>
     
-    <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
+    <script>
         $(document).ready(function() {
             const scrollingWrapper = $(".scrolling-wrapper");
+            const prevButton = document.getElementById("carousel-prev-button");
+            const nextButton = document.getElementById("carousel-next-button");
+            const card = $(".card");
+            const cardWidth = card.outerWidth(true);
+    
             // Make an AJAX request to fetch the text files
             $.ajax({
                 url: "/assets/projects", // Update the URL as per your folder structure
@@ -126,56 +131,36 @@
                             dataType: "text",
                             success: function(fileContent) {
                                 // Create a new card element
-                                const card = $("<div>").addClass("card");
-                                    
-                                // Set the content of the card to the text file content
-                                // card.text(fileContent);
-
+                                const cardElement = $("<div>").addClass("card");
+    
                                 // Create a header text with class and set it to the filename
                                 const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
-                        
+    
                                 // Set the content of the card to the text file content
                                 const contentText = $("<p>").addClass("card-content").text(fileContent);
-                                
+    
                                 // Append the header and content to the card
-                                card.append(headerText, contentText);
-                                
+                                cardElement.append(headerText, contentText);
+    
                                 // Append the card to the scrolling wrapper
-                                scrollingWrapper.append(card);
+                                scrollingWrapper.append(cardElement);
                             }
                         });
                     });
                 }
             });
-    });
+    
+            // Add event listeners to the buttons
+            prevButton.addEventListener("click", function() {
+                scrollingWrapper.animate({ scrollLeft: "-=" + cardWidth }, "fast");
+            });
+    
+            nextButton.addEventListener("click", function() {
+                scrollingWrapper.animate({ scrollLeft: "+=" + cardWidth }, "fast");
+            });
+        });
     </script>
     
-    <script> //FUNCIONAR BOTOES
-        $(document).ready(function() {
-            const prevButton = document.getElementById("carousel-prev-button");
-            const nextButton = document.getElementById("carousel-next-button");
-            const scrollingWrapper = document.querySelector(".scrolling-wrapper");
-
-            const card = document.querySelector(".card");
-            const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
-
-            prevButton.addEventListener("click", function() {
-                scrollingWrapper.scrollBy({
-                    left: -(cardWidth),
-                    behavior: "smooth"
-                });
-            });
-
-            nextButton.addEventListener("click", function() {
-                scrollingWrapper.scrollBy({
-                    left: cardWidth,
-                    behavior: "smooth"
-                });
-            });
-
-        });
-
-    </script>
     <!--artigos--------------------------------------------------------->
     <section id="artigos">
         <h1>Publicações</h1>
