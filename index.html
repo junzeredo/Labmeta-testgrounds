@@ -108,57 +108,75 @@
         </div>
     </section>
     
-    <script>
-        const scrollingWrapper = $(".scrolling-wrapper");
-        const prevButton = document.getElementById("carousel-prev-button");
-        const nextButton = document.getElementById("carousel-next-button");
-        const card = $(".card");
-        const cardWidth = card.outerWidth(true);
+    <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
+        $(document).ready(function() {
+            const scrollingWrapper = $(".scrolling-wrapper");
+            // Make an AJAX request to fetch the text files
+            $.ajax({
+                url: "/assets/projects/", // Update the URL as per your folder structure
+                success: function(data) {
+                    // Iterate over the files
+                    $(data).find("a[href$='.txt']").each(function() {
+                        const filename = $(this).attr("href");
+                        // Extract the name of the file without extension
+                        const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
+                        // Make another AJAX request to get the content of each text file
+                        $.ajax({
+                            url: filename,
+                            dataType: "text",
+                            success: function(fileContent) {
+                                // Create a new card element
+                                const card = $("<div>").addClass("card");
+                                    
+                                // Set the content of the card to the text file content
+                                // card.text(fileContent);
 
-        // Make an AJAX request to fetch the text files
-        $.ajax({
-            url: "/assets/projects", // Update the URL as per your folder structure
-            success: function(data) {
-                // Iterate over the files
-                $(data).find("a[href$='.txt']").each(function() {
-                    const filename = $(this).attr("href");
-                    // Extract the name of the file without extension
-                    const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
-                    // Make another AJAX request to get the content of each text file
-                    $.ajax({
-                        url: filename,
-                        dataType: "text",
-                        success: function(fileContent) {
-                            // Create a new card element
-                            const cardElement = $("<div>").addClass("card");
-
-                            // Create a header text with class and set it to the filename
-                            const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
-
-                            // Set the content of the card to the text file content
-                            const contentText = $("<p>").addClass("card-content").text(fileContent);
-
-                            // Append the header and content to the card
-                            cardElement.append(headerText, contentText);
-
-                            // Append the card to the scrolling wrapper
-                            scrollingWrapper.append(cardElement);
-                        }
+                                // Create a header text with class and set it to the filename
+                                const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
+                        
+                                // Set the content of the card to the text file content
+                                const contentText = $("<p>").addClass("card-content").text(fileContent);
+                                
+                                // Append the header and content to the card
+                                card.append(headerText, contentText);
+                                
+                                // Append the card to the scrolling wrapper
+                                scrollingWrapper.append(card);
+                            }
+                        });
                     });
-                });
-            }
-        });
-
-        // Add event listeners to the buttons
-        prevButton.addEventListener("click", function() {
-            scrollingWrapper.animate({ scrollLeft: "-=" + cardWidth }, 50);
-        });
-
-        nextButton.addEventListener("click", function() {
-            scrollingWrapper.animate({ scrollLeft: "+=" + cardWidth }, 50);
-        });
+                }
+            });
+    });
     </script>
     
+    <script> //FUNCIONAR BOTOES
+        $(document).ready(function() {
+                const prevButton = document.getElementById("carousel-prev-button");
+                const nextButton = document.getElementById("carousel-next-button");
+                const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+
+                const card = document.querySelector(".card");
+                const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+                prevButton.addEventListener("click", function() {
+                    scrollingWrapper.scrollBy({
+                        left: -(cardWidth),
+                        behavior: "smooth"
+                    });
+                });
+
+                nextButton.addEventListener("click", function() {
+                    scrollingWrapper.scrollBy({
+                        left: cardWidth,
+                        behavior: "smooth"
+                    });
+                });
+
+        });
+    </script>
+
+
     <!--artigos--------------------------------------------------------->
     <section id="artigos">
         <h1>Publicações</h1>
@@ -192,7 +210,163 @@
     });
     </script>
     </section>
-<!------ CENA 3D ------------------------------------------------------->
+
+    <!--equipe---------------------------------------------------------->
+    <section class="equipe">
+        <h1>Equipe</h1>
+        <hr class="h1_divider">
+
+        <div class="all_members">
+            <div id="estudantes">
+                <h2>Estudantes</h2>
+                <div class="profile_container">
+                    <!-- 06 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p06.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Mariana Prokopowski</text></div>
+                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 07 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p07.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Mariana Almeida</text></div>
+                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 08 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p08.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Sofia Simões</text></div>
+                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 09 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p09.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Victoria Mariane</text></div>
+                            <div class="profile_function"><text class="function">Pesquisadora IC</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 10 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p10.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Nickolas Quintino</text></div>
+                            <div class="profile_function"><text class="function">Pesquisador IC</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 11 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p11.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Jun Zeredo</text></div>
+                            <div class="profile_function"><text class="function">Voluntário</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="professores">
+                <h2>Professores</h2>
+                <div class="profile_container">
+                    <!-- 03 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p03.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Prof. Dr. Márcio Catapan</text></div>
+                            <div class="profile_function"><text class="function">Coordenador</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 02 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p02.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Prof. Dra. Isabella Sierra</text></div>
+                            <div class="profile_function"><text class="function">Prof. Aux. de Pesquisa</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 01 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p01.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Prof. Dr. Márcio Carboni</text></div>
+                            <div class="profile_function"><text class="function">Vice Coordenador</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 04 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p04.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Msc. Fuad Pumarejo</text></div>
+                            <div class="profile_function"><text class="function">Doutorando</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 05 ------------------------------------------------------------->
+                    <div class="grid_item">
+                        <div class="profile_image"><img src="assets/profiles/p05.png"></div>
+                        <div class="textg">
+                            <div class="profile_name"><text class="profile_name">Msc. Lucas Gregory</text></div>
+                            <div class="profile_function"><text class="function">Doutorando</text></div>
+                            <div class="ln">
+                                <img src="assets/logos/Linkedin.svg">
+                                <text class="ln">@Person.Name</text>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!------ CENA 3D --------------------------------------------------->
     <script type="module">
         import * as THREE from './js/three.module.js';
 import { APP } from './js/app.js';
