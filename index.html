@@ -81,8 +81,10 @@
             <div id="scrolling-wrapper" class="scrolling-wrapper">
                 <div class="card">
                     <h2 class="card-header">card</h2>
-                    <p class="card-content">asdfghjkl</p>
-                </div>
+                    <div class="card-content-box">
+                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta mollitia molestias quasi tenetur itaque cupiditate dolore accusantium iste nisi optio facere distinctio corrupti dignissimos blanditiis doloribus, temporibus quidem. Neque.</p>
+                    </div>
+                    </div>
                 <div class="card">
                     <h2 class="card-header">card</h2>
                     <p class="card-content">asdfghjkl</p>
@@ -173,6 +175,29 @@
 
         });
     </script>
+    <script>
+        const textbox = document.getElementById('card-content');
+
+        let isMouseOver = false;
+
+        textbox.addEventListener('mouseenter', function() {
+        isMouseOver = true;
+        if (isMouseOver) {
+            textbox.style.animationPlayState = 'running';
+        }
+        });
+
+        textbox.addEventListener('mouseleave', function() {
+        isMouseOver = false;
+        if (!isMouseOver) {
+            textbox.style.animationPlayState = 'paused';
+        }
+        });
+
+        window.addEventListener('scroll', function() {
+        textbox.style.animationPlayState = 'paused';
+        });
+            </script>
 
 
     <!--artigos--------------------------------------------------------->
