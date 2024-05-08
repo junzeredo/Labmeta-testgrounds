@@ -109,45 +109,43 @@
     </section>
     
     <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
-        $(document).ready(function() {
-            const scrollingWrapper = $(".scrolling-wrapper");
-            // Make an AJAX request to fetch the text files
-            $.ajax({
-                url: "projects", // Update the URL as per your folder structure
-                success: function(data) {
-                    // Iterate over the files
-                    $(data).find("a[href$='.txt']").each(function() {
-                        const filename = $(this).attr("href");
-                        // Extract the name of the file without extension
-                        const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
-                        // Make another AJAX request to get the content of each text file
-                        $.ajax({
-                            url: filename,
-                            dataType: "text",
-                            success: function(fileContent) {
-                                // Create a new card element
-                                const card = $("<div>").addClass("card");
-                                    
-                                // Set the content of the card to the text file content
-                                // card.text(fileContent);
+        const scrollingWrapper = $(".scrolling-wrapper");
+        // Make an AJAX request to fetch the text files
+        $.ajax({
+            url: "assets/projects", // Update the URL as per your folder structure
+            success: function(data) {
+                // Iterate over the files
+                $(data).find("a[href$='.txt']").each(function() {
+                    const filename = $(this).attr("href");
+                    // Extract the name of the file without extension
+                    const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
+                    // Make another AJAX request to get the content of each text file
+                    $.ajax({
+                        url: filename,
+                        dataType: "text",
+                        success: function(fileContent) {
+                            // Create a new card element
+                            const card = $("<div>").addClass("card");
+                                
+                            // Set the content of the card to the text file content
+                            // card.text(fileContent);
 
-                                // Create a header text with class and set it to the filename
-                                const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
-                        
-                                // Set the content of the card to the text file content
-                                const contentText = $("<p>").addClass("card-content").text(fileContent);
-                                
-                                // Append the header and content to the card
-                                card.append(headerText, contentText);
-                                
-                                // Append the card to the scrolling wrapper
-                                scrollingWrapper.append(card);
-                            }
-                        });
+                            // Create a header text with class and set it to the filename
+                            const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
+                    
+                            // Set the content of the card to the text file content
+                            const contentText = $("<p>").addClass("card-content").text(fileContent);
+                            
+                            // Append the header and content to the card
+                            card.append(headerText, contentText);
+                            
+                            // Append the card to the scrolling wrapper
+                            scrollingWrapper.append(card);
+                        }
                     });
-                }
-            });
-    });
+                });
+            }
+        });
     </script>
     
     <script> //FUNCIONAR BOTOES
