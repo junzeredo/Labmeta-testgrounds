@@ -78,7 +78,7 @@
         <hr class="h1_divider">
         <div class="carouselview">
             <button id="carousel-prev-button" class="carousel-prev-button"></button>
-            <div class="scrolling-wrapper">
+            <div id="scrolling-wrapper" class="scrolling-wrapper">
                 <div class="card">
                     <h2 class="card-header">card</h2>
                     <p class="card-content">asdfghjkl</p>
@@ -113,7 +113,7 @@
             const scrollingWrapper = $(".scrolling-wrapper");
             // Make an AJAX request to fetch the text files
             $.ajax({
-                url: "/assets/projects/", // Update the URL as per your folder structure
+                url: "assets/projects", // Update the URL as per your folder structure
                 success: function(data) {
                     // Iterate over the files
                     $(data).find("a[href$='.txt']").each(function() {
