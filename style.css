@@ -248,6 +248,8 @@ h1{
     overflow: scroll;
     display: block;
     scroll-behavior: smooth;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
     
     display: flex;
     width: 100%;
