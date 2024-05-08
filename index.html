@@ -113,7 +113,7 @@
             const scrollingWrapper = $(".scrolling-wrapper");
             // Make an AJAX request to fetch the text files
             $.ajax({
-                url: "assets/projects", // Update the URL as per your folder structure
+                url: "projects", // Update the URL as per your folder structure
                 success: function(data) {
                     // Iterate over the files
                     $(data).find("a[href$='.txt']").each(function() {
