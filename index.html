@@ -32,18 +32,41 @@
     </section>
     <!--barra de navegacao---------------------------------------------->
     <header class="nav_principal">
-        <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
-        <nav class="barra_de_nav">
-            <ul>
-                <li><a href="">Sobre Nós</a></li>
-                <li><a href="">Projetos</a></li>
-                <li><a href="">Eventos</a></li>
-                <li><a href="">Artigos</a></li>
-                <li><a href="">Equipe</a></li>
-                <li><a href="">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="navcel">
+            <img src="/Labmeta-testgrounds/assets/logos/logovertical.svg">
+            <img id="sanduiche" src="/Labmeta-testgrounds/assets/logos/menu_sanduiche.svg">
+        </div>
+        <div class="navpc">
+            <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
+            <nav class="barra_de_nav">
+                <ul>
+                    <li><a href="">Sobre Nós</a></li>
+                    <li><a href="">Projetos</a></li>
+                    <li><a href="">Eventos</a></li>
+                    <li><a href="">Artigos</a></li>
+                    <li><a href="">Equipe</a></li>
+                    <li><a href="">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+    <script>    
+        let sanduiche = document.getElementById('sanduiche'); //botão do sanduiche
+        const nav = document.querySelector('.navpc'); //lista 
+        var aux = 0; //0 se desativado, 1 se ativado
+
+        /* se desativada, a lista fica visivel e aux sinaliza 1 e retorna
+            se ativada, aux sinaliza 0 e a nav fica invisivel */
+        sanduiche.addEventListener("click", function(){
+            if (aux == 0){ 
+                nav.style.display = "flex";
+                aux = 1;
+                return;
+            }
+            aux = 0;
+            nav.style.display = "none";
+        });
+    </script>
     <!--sobre----------------------------------------------------------->
     <section id="sobre"> 
         <div class="container">
@@ -434,5 +457,29 @@ if (!isMobileDevice()) {
 }
 
     </script>
+
+    <footer>
+        <div class="fup">
+            <img src="/Labmeta-testgrounds/assets/logos/navbar_logo.svg">
+            <a>Página Inicial</a>
+            <a>Sobre Nós</a>
+            <a>Projetos</a>
+            <a>Artigos</a>
+            <a>Equipe</a>
+            <a>Contato</a>
+            <a>UFPR</a>
+        </div>
+        <div class="fdown">
+            <div class="fleft">
+                <div>Copyright © 2024 Laboratório de Metaverso da UFPR</div>
+                <div class="fd"><img src="/Labmeta-testgrounds/assets/logos/language.svg"><a>Portugues</a></div>
+            </div>
+            <div class="logos">
+                <img src="/Labmeta-testgrounds/assets/logos/Intagram.svg">
+                <img src="/Labmeta-testgrounds/assets/logos/ln2.svg">
+                <img src="/Labmeta-testgrounds/assets/logos/ufpr.svg">
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

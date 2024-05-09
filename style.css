@@ -93,6 +93,10 @@ h1{
     animation: appear_wscroll;
     animation-timeline: view();
 }
+.navcel{
+    display: none;
+}
+
 .navbar_logo{
     height: 1.5em;
     cursor: pointer;
@@ -248,8 +252,6 @@ h1{
     overflow: scroll;
     display: block;
     scroll-behavior: smooth;
-    overflow-wrap: break-word;
-    white-space: pre-wrap;
     
     display: flex;
     width: 100%;
@@ -384,4 +386,209 @@ h1{
     flex-direction: row;
     align-items: flex-start;
     align-self: stretch;
+}
+
+/* footer */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    box-sizing: border-box;
+    background: linear-gradient(94deg, #000 3.28%, rgba(0, 0, 0, 0.81) 100%);
+}
+
+.fup {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 75%;
+    padding: 5% 0 10% 0;
+    gap: 30px;
+}
+
+.fup img {
+    margin-bottom: 2%;
+}
+
+.fup a {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 100;
+    line-height: normal;
+}
+
+.fup a:hover {
+    text-decoration-line: underline;
+}
+
+.fup img {
+    width: 20%;
+}
+
+.fdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: var(--Brand-Colors-VR-Purple, #812CE5);
+    font-size: 20px;
+    line-height: normal;
+    letter-spacing: -1.6px;
+}
+
+.fd {
+    display: flex;
+    color: var(--Brand-Colors-VR-White, #F3EFF5);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    letter-spacing: -1.6px;
+}
+
+.fd:hover {
+    text-decoration-line: underline;
+}
+
+.fleft {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.logos {
+    display: inline-flex;
+    flex: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 25px;
+    align-items: center;
+}
+
+    
+@media (max-width: 768px) {
+
+    /* header para celular */
+    .navpc{
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+        top: 100%;
+        gap: var(--edge-roundness, 10px);
+        background: linear-gradient(180deg, rgba(71, 71, 71, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%);
+        backdrop-filter: blur(20px);
+    }
+    .navpc img{
+        display: none;
+    }
+    .barra_de_nav{
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+    .barra_de_nav ul{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        gap: 17.5px;
+        padding: 10%;
+        box-sizing: border-box;
+        font-size: 35px;
+        font-weight: 300;
+    }
+    .navcel{
+        display: flex;
+    }
+    .nav_principal{
+        justify-content: start;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0px 0px;
+    }
+    .navcel{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .navcel img:nth-of-type(1) {
+        display: flex;
+        width: 10%;
+    }
+    
+    .navcel img:nth-of-type(2) {
+        display: flex;
+        width: 5%;
+    }
+
+    /* footer para celular */
+
+    footer {
+        height: 400px;
+    }
+    
+    .fup {
+        height: 80%;
+        padding: 50px 0px 100px 0px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-shrink: 0;
+        margin-bottom: 10%;
+    }
+    
+    .fup img {
+        margin-bottom: 1%;
+    }
+    
+    .fup a {
+        font-size: 0.8em;
+    }
+    
+    .fup img {
+        width: 80%;
+        margin-bottom: 1%;
+    }
+    
+    .fdown {
+        flex-direction: column-reverse;
+        align-items: start;
+        font-size: 0.8em;
+    }
+    
+    .fd {
+        font-size: 0.8em;
+    }
+    
+    .fleft {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: start;
+        justify-content: center;
+    }
+    
+    
+    .logos {
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .logos img{
+        height: 50%;
+    }
 }
