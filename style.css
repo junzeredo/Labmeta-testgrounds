@@ -209,11 +209,16 @@ h1{
     padding: 50px 25px;
     margin-right: 1.5vw;
     border-radius: var(--edge-roundness);
-    background: linear-gradient(180deg, rgba(2, 4, 2, 0.50) 0%, rgba(130, 44, 229, 0.143) 100%);
+    background-image: url(/Labmeta-testgrounds/assets/fundo/fundopreto.png);
+    background-size: cover;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    transition: background-image 0.3s ease-in-out;
+}
+.card:hover{
+    background-image: url(/Labmeta-testgrounds/assets/fundo/fundoroxo.png);
 }
 .card img{
     border-radius: var(--edge-roundness);
@@ -221,12 +226,19 @@ h1{
     aspect-ratio: 1/1;
     object-fit: cover;
 }
-.card:hover{
-    transition: 3s;
-    background: linear-gradient(180deg, rgba(2, 4, 2, 0.50) 0%, rgba(129, 44, 229, 0.50) 100%);
-}
 .image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 2%;
+    box-sizing: border-box;
+    height: 60%;
+    background-image: url(/Labmeta-testgrounds/assets/projects/img1.jpg);
+    background-size:cover;
+    background-position: 50%;
+    background-repeat: none;
     border-radius: var(--edge-roundness);
+    transition: background-image 0.5s ease-in;
 }
 
 .card-header{
@@ -263,10 +275,6 @@ h1{
     }
 }
 
-.card-content-box:hover{
-    transition: 0.5s;
-    background-color: var(--lm_black);
-}
 
 .carouselview button{
     border: none;
