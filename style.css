@@ -93,6 +93,11 @@ h1{
     animation: appear_wscroll;
     animation-timeline: view();
 }
+.navpc{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .navcel{
     display: none;
 }
