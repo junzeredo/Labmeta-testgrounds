@@ -12,8 +12,6 @@
     <title>testsite</title>
 </head>
 
-
-
 <body>
     <!--cena 3D--------------------------------------------------------->
     <section id="test"> 
@@ -104,7 +102,7 @@
             <div id="scrolling-wrapper" class="scrolling-wrapper">
                 
                 <div class="card">
-                    <div class="image-container" id="imagecontainer">
+                    <div class="imagecontainer" id="imagecontainer">
                         <h2 class="card-header">evento1</h2>
                         <p>dd/mm/aaaa</p>
                     </div>
@@ -112,61 +110,18 @@
                     <div class="card-content-box">
                         <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
                     </div>
+                    <button class="mais-info">Mais Informações</button>
                 </div>
 
-                <div class="card">
-                    <div class="image-container" id="imagecontainer">
-                        <h2 class="card-header">evento1</h2>
-                        <p>dd/mm/aaaa</p>
-                    </div>
-
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="image-container" id="imagecontainer">
-                        <h2 class="card-header">evento1</h2>
-                        <p>dd/mm/aaaa</p>
-                    </div>
-
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="image-container" id="imagecontainer">
-                        <h2 class="card-header">evento1</h2>
-                        <p>dd/mm/aaaa</p>
-                    </div>
-
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="image-container" id="imagecontainer">
-                        <h2 class="card-header">evento1</h2>
-                        <p>dd/mm/aaaa</p>
-                    </div>
-
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
             </div>
             <button id="carousel-next-button" class="carousel-next-button"></button>
         </div>
     </section>
-    
     <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
         const scrollingWrapper = $(".scrolling-wrapper");
         // Make an AJAX request to fetch the text files
         $.ajax({
-            url: "/assets/projects/", // Update the URL as per your folder structure
+            url: "/./assets/projects/", // Update the URL as per your folder structure
             success: function(data) {
                 // Iterate over the files
                 $(data).find("a[href$='.txt']").each(function() {
@@ -180,9 +135,9 @@
                         success: function(fileContent) {
                             // Create a new card element
                             const card = $("<div>").addClass("card");
-                                
-                            // Set the content of the card to the text file content
-                            // card.text(fileContent);
+
+                            // create image-container div
+                            const image = $("<div>").addClass("imagecontainer");
 
                             // Create a header text with class and set it to the filename
                             const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
@@ -203,7 +158,7 @@
 
         /* muda as imagens quando essas são clicadas */
         var aux = 1; //começa na primeira imagem
-        const imagecontainers = document.querySelectorAll('.image-container'); //div com fundo img
+        const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
 
         imagecontainers.forEach(imageContainer => {
             imageContainer.addEventListener('click', function() {
@@ -217,7 +172,6 @@
 
 
     </script>
-    
     <script> //FUNCIONAR BOTOES
         $(document).ready(function() {
                 const prevButton = document.getElementById("carousel-prev-button");
@@ -243,8 +197,6 @@
 
         });
     </script>
-
-
     <!--artigos--------------------------------------------------------->
     <section id="artigos">
         <h1>Publicações</h1>
@@ -278,7 +230,6 @@
     });
     </script>
     </section>
-
     <!--equipe---------------------------------------------------------->
     <section class="equipe">
         <h1>Equipe</h1>
@@ -431,9 +382,6 @@
             </div>
         </div>
     </section>
-
-
-
     <!------ CENA 3D --------------------------------------------------->
     <script type="module">
         import * as THREE from './js/three.module.js';
@@ -467,7 +415,7 @@ if (!isMobileDevice()) {
 }
 
     </script>
-
+    <!------ FOOTER ---------------------------------------------------->
     <footer>
         <div class="fup">
             <img src="/Labmeta-testgrounds/assets/logos/navbar_logo.svg">
