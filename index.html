@@ -31,8 +31,8 @@
     <!--barra de navegacao---------------------------------------------->
     <header class="nav_principal">
         <div class="navcel">
-            <img src="/Labmeta-testgrounds/assets/logos/logovertical.svg">
-            <img id="sanduiche" src="/Labmeta-testgrounds/assets/logos/menu_sanduiche.svg">
+            <img src="assets/logos/logovertical.svg">
+            <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
         </div>
         <div class="navpc">
             <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
@@ -100,25 +100,20 @@
         <div class="carouselview">
             <button id="carousel-prev-button" class="carousel-prev-button"></button>
             <div id="scrolling-wrapper" class="scrolling-wrapper">
-                
-                <div class="card">
-                    <div class="imagecontainer" id="imagecontainer">
-                        <h2 class="card-header">evento1</h2>
-                        <p>dd/mm/aaaa</p>
-                    </div>
-
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                    <button class="mais-info">Mais Informações</button>
-                </div>
 
             </div>
             <button id="carousel-next-button" class="carousel-next-button"></button>
         </div>
     </section>
     <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
+    document.addEventListener('DOMContentLoaded', function() {
         const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+        var cardnum = 1;
+
+        const path = "assets/projects/";
+                const partes = path.split('/');
+                const ultimaPasta = partes[partes.length - 1];
+                console.log(ultimaPasta);
 
         // Make an AJAX request to fetch the text files
         fetch("assets/projects/")
@@ -128,19 +123,16 @@
                 const parser = new DOMParser();
                 const htmlDocument = parser.parseFromString(data, "text/html");
 
-                // Iterate over the files
-                htmlDocument.querySelectorAll("a[href$='.txt']").forEach(link => {
-                    const filename = link.getAttribute("href");
-                    // Extract the name of the file without extension
-                    const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
+                const listaUl = htmlDocument.querySelector("ul");  // seleciona a lista ul
+                const elementosLi = listaUl.querySelectorAll("li");  // selecione todos os elementos li dentro da lista ul
+                const numeroDeLi = elementosLi.length - 1;  //número de elementos li
+                console.log(numeroDeLi)
 
-                    // Make another AJAX request to get the content of each text file
-                    fetch(filename)
-                        .then(response => response.text())
-                        .then(fileContent => {
+                for (var i = 1; i <= numeroDeLi; i++){
                             // Create a new card element
                             const card = document.createElement("div");
-                            card.classList.add("card");
+                            card.classList.add("card", "card" + cardnum);
+                            cardnum++;
 
                             // create image-container div
                             const image = document.createElement("div");
@@ -149,12 +141,31 @@
                             // Create a header text with class and set it to the filename
                             const headerText = document.createElement("h2");
                             headerText.classList.add("card-header");
-                            headerText.textContent = filenameWithoutExtension;
 
                             // Set the content of the card to the text file content
                             const contentText = document.createElement("p");
                             contentText.classList.add("card-content");
-                            contentText.textContent = fileContent;
+                            var filePath = "assets/projects/projeto" + i + "/descricao.txt";
+                            var filePath2 = "assets/projects/projeto" + i + "/titulo.txt";
+
+                            fetch(filePath)
+                            .then(response => {
+                
+                                return response.text();
+                            })
+                            .then(texto => {
+                                contentText.textContent = texto;                                
+                            })
+
+                            fetch(filePath2)
+                            .then(response => {
+                
+                                return response.text();
+                            })
+                            .then(texto => {
+                                headerText.innerText = texto;
+                                
+                            })
 
                             // Append the header and content to the card
                             card.appendChild(headerText);
@@ -162,11 +173,9 @@
 
                             // Append the card to the scrolling wrapper
                             scrollingWrapper.appendChild(card);
-                        })
-                        .catch(error => console.error("Error fetching file:", error));
-                });
-            })
-            .catch(error => console.error("Error fetching file list:", error));
+                }
+            });
+
 
         /* muda as imagens quando essas são clicadas */
         var aux = 1; //começa na primeira imagem
@@ -178,11 +187,11 @@
                 aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
             }
             aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-            imageContainer.style.backgroundImage = "url(assets/projects/img" + aux + ".jpg)";
+            this.style.backgroundImage = "url(assets/projects/projeto" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
             });
         });
 
-
+    });
     </script>
     <script> //FUNCIONAR BOTOES
         $(document).ready(function() {
@@ -430,7 +439,7 @@ if (!isMobileDevice()) {
     <!------ FOOTER ---------------------------------------------------->
     <footer>
         <div class="fup">
-            <img src="/Labmeta-testgrounds/assets/logos/navbar_logo.svg">
+            <img src="/assets/logos/navbar_logo.svg">
             <a>Página Inicial</a>
             <a>Sobre Nós</a>
             <a>Projetos</a>
@@ -442,12 +451,12 @@ if (!isMobileDevice()) {
         <div class="fdown">
             <div class="fleft">
                 <div>Copyright © 2024 Laboratório de Metaverso da UFPR</div>
-                <div class="fd"><img src="/Labmeta-testgrounds/assets/logos/language.svg"><a>Portugues</a></div>
+                <div class="fd"><img src="assets/logos/language.svg"><a>Portugues</a></div>
             </div>
             <div class="logos">
-                <img src="/Labmeta-testgrounds/assets/logos/Intagram.svg">
-                <img src="/Labmeta-testgrounds/assets/logos/ln2.svg">
-                <img src="/Labmeta-testgrounds/assets/logos/ufpr.svg">
+                <img src="/assets/logos/Intagram.svg">
+                <img src="/assets/logos/ln2.svg">
+                <img src="/assets/logos/ufpr.svg">
             </div>
         </div>
     </footer>
