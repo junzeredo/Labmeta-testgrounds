@@ -127,56 +127,59 @@
                 const numeroDeLi = elementosLi.length - 1;  //número de elementos li
                 console.log(numeroDeLi)
 
-                for (var i = 1; i <= numeroDeLi; i++){
-                            // Create a new card element
-                            const card = document.createElement("div");
-                            card.classList.add("card", "card" + cardnum);
-                            cardnum++;
+                for (var i = 1; i <= numeroDeLi; i++) {
+                // Create a new card element
+                const card = document.createElement("div");
+                card.classList.add("card", "card" + cardnum);
+                cardnum++;
 
-                            // create image-container div
-                            const image = document.createElement("div");
-                            image.classList.add("imagecontainer");
+                // create image-container div
+                const imageContainer = document.createElement("div");
+                imageContainer.classList.add("imagecontainer", "projeto" + i);
+                imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img" + 1 + ".jpg)";
 
-                            // Create a header text with class and set it to the filename
-                            const headerText = document.createElement("h2");
-                            headerText.classList.add("card-header");
+                // Create a header text with class
+                const headerText = document.createElement("h2");
+                headerText.classList.add("card-header");
 
-                            // Set the content of the card to the text file content
-                            const contentText = document.createElement("p");
-                            contentText.classList.add("card-content");
-                            var filePath = "assets/projects/projeto" + i + "/descricao.txt";
-                            var filePath2 = "assets/projects/projeto" + i + "/titulo.txt";
+                // Set the content of the header text
+                var filePath2 = "assets/projects/projeto" + i + "/titulo.txt";
+                fetch(filePath2)
+                    .then(response => response.text())
+                    .then(texto => {
+                        headerText.innerText = texto;
+                    })
+                    .catch(error => console.error('Erro ao carregar o arquivo de texto:', error));
 
-                            fetch(filePath)
-                            .then(response => {
-                
-                                return response.text();
-                            })
-                            .then(texto => {
-                                contentText.textContent = texto;                                
-                            })
+                // Append the header text to the image container
+                imageContainer.appendChild(headerText);
 
-                            fetch(filePath2)
-                            .then(response => {
-                
-                                return response.text();
-                            })
-                            .then(texto => {
-                                headerText.innerText = texto;
-                                
-                            })
+                // Append the image container to the card
+                card.appendChild(imageContainer);
 
-                            // Append the header and content to the card
-                            card.appendChild(headerText);
-                            card.appendChild(contentText);
+                // Set the content of the card to the text file content
+                const contentText = document.createElement("p");
+                contentText.classList.add("card-content");
+                var filePath = "assets/projects/projeto" + i + "/descricao.txt";
+                fetch(filePath)
+                    .then(response => response.text())
+                    .then(texto => {
+                        contentText.textContent = texto;
+                    })
+                    .catch(error => console.error('Erro ao carregar o arquivo de texto:', error));
 
-                            // Append the card to the scrolling wrapper
-                            scrollingWrapper.appendChild(card);
-                }
+                // Append the content text to the card
+                card.appendChild(contentText);
+
+                // Append the card to the scrolling wrapper
+                scrollingWrapper.appendChild(card);
+            }
 
 
+
+        $(document).ready(function() {
         /* muda as imagens quando essas são clicadas */
-        var aux = 1; //começa na primeira imagem
+        var aux = 2; //começa na primeira imagem entao deve ir para a 2
         const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
 
         imagecontainers.forEach(imageContainer => {
@@ -185,9 +188,10 @@
                 aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
             }
             aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-            this.style.backgroundImage = "url(assets/projects/projeto" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+            this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
             });
         });
+    });
 
     });
     </script>
