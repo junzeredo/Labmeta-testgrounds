@@ -35,7 +35,7 @@ body{
 /* -------section margins------- */
 section{
     /* cada section (sobre, eventos, projetos, artigos, membros, etc...) vai conter margens de 4vh 4vw */
-    margin: 8vh 4vw;
+    margin: 16vh 4vw;
 }
 
 
@@ -59,7 +59,8 @@ h1{
     animation: scale_wscroll;
     scale: 0 1;
     transform-origin: left;
-    animation-timeline: view(100px);
+    animation-timeline: view(block);
+    
 }
 
 
@@ -92,6 +93,7 @@ h1{
     backdrop-filter: blur(40px);
     animation: appear_wscroll;
     animation-timeline: view();
+    z-index: 2;
 }
 .navcel{
     display: none;
@@ -110,6 +112,9 @@ h1{
 }
 .barra_de_nav ul{
     list-style-type: none;
+    background: #020402a6;
+    backdrop-filter: blur(40px);
+
 }
 .barra_de_nav a{
     line-height: normal;
@@ -211,6 +216,7 @@ h1{
     max-width: 300px;
     min-width: 200px;
     height: 70vh;
+    max-height: 500px;
     padding: 50px 25px;
     margin-right: 1.5vw;
     border-radius: var(--edge-roundness);
