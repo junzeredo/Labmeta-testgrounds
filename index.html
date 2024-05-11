@@ -112,7 +112,7 @@
         fetch("assets/projects")
             .then(response => response.text())
             .then(data => {
-                const path = "assets/projects/";
+                const path = "assets/projects";
                 const partes = path.split('/');
                 const ultimaPasta = partes[partes.length - 1];
                 console.log(ultimaPasta);
