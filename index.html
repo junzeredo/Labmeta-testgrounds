@@ -12,13 +12,11 @@
     <title>testsite</title>
 </head>
 
-
-
 <body>
     <!--cena 3D--------------------------------------------------------->
     <section id="test"> 
         <header class="nav_landing_page">
-            <nav class="barra_de_nav">
+            <nav class="barra_de_nav b1">
                 <ul>
                     <li><a href="">Sobre Nós</a></li>
                     <li><a href="">Projetos</a></li>
@@ -32,18 +30,41 @@
     </section>
     <!--barra de navegacao---------------------------------------------->
     <header class="nav_principal">
-        <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
-        <nav class="barra_de_nav">
-            <ul>
-                <li><a href="">Sobre Nós</a></li>
-                <li><a href="">Projetos</a></li>
-                <li><a href="">Eventos</a></li>
-                <li><a href="">Artigos</a></li>
-                <li><a href="">Equipe</a></li>
-                <li><a href="">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="navcel">
+            <img src="assets/logos/logovertical.svg">
+            <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
+        </div>
+        <div class="navpc">
+            <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
+            <nav class="barra_de_nav b2">
+                <ul>
+                    <li><a href="">Sobre Nós</a></li>
+                    <li><a href="">Projetos</a></li>
+                    <li><a href="">Eventos</a></li>
+                    <li><a href="">Artigos</a></li>
+                    <li><a href="">Equipe</a></li>
+                    <li><a href="">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+    <script>    
+        let sanduiche = document.getElementById('sanduiche'); //botão do sanduiche
+        const nav = document.querySelector('.navpc'); //lista 
+        var aux = 0; //0 se desativado, 1 se ativado
+
+        /* se desativada, a lista fica visivel e aux sinaliza 1 e retorna
+            se ativada, aux sinaliza 0 e a nav fica invisivel */
+        sanduiche.addEventListener("click", function(){
+            if (aux == 0){ 
+                nav.style.display = "flex";
+                aux = 1;
+                return;
+            }
+            aux = 0;
+            nav.style.display = "none";
+        });
+    </script>
     <!--sobre----------------------------------------------------------->
     <section id="sobre"> 
         <div class="container">
@@ -79,112 +100,100 @@
         <div class="carouselview">
             <button id="carousel-prev-button" class="carousel-prev-button"></button>
             <div id="scrolling-wrapper" class="scrolling-wrapper">
-                
-                <div class="card">
-                    <div class="image-container">
-                        <img src="assets/projects/2024-01-01-evento1.png">
-                    </div>
-                    <h2 class="card-header">evento1</h2>
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
 
-                <div class="card">
-                    <div class="image-container">
-                        <img src="assets/projects/2024-01-01-evento1.png">
-                    </div>
-                    <h2 class="card-header">evento1</h2>
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="image-container">
-                        <img src="assets/projects/2024-01-01-evento1.png">
-                    </div>
-                    <h2 class="card-header">evento1</h2>
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="image-container">
-                        <img src="assets/projects/2024-01-01-evento1.png">
-                    </div>
-                    <h2 class="card-header">evento1</h2>
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="image-container">
-                        <img src="assets/projects/2024-01-01-evento1.png">
-                    </div>
-                    <h2 class="card-header">evento1</h2>
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="image-container">
-                        <img src="assets/projects/2024-01-01-evento1.png">
-                    </div>
-                    <h2 class="card-header">evento1</h2>
-                    <div class="card-content-box">
-                        <p class="card-content" id="card-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quam facilis nihil nobis mollitia. Molestiae sunt dolorum neque est omnis modi, distinctio atque adipisci itaque voluptate similique doloribus laudantium. Nisi consequatur fuga doloremque tempore rerum earum adipisci ducimus accusantium velit labore veritatis distinctio numquam, excepturi ipsa laborum dicta quam, architecto doloribus! Reiciendis aspernatur assumenda quis harum libero, beatae, nulla dolor consectetur temporibus incidunt accusantium ut adipisci, dolorum debitis cupiditate cum odit magni at quaerat iste nostrum officia. Vero quos ducimus, delectus sint atque quaerat tenetur fugiat sed deleniti totam, corporis at amet. Recusandae, consectetur? Autem distinctio quaerat cumque quidem explicabo.</p>
-                    </div>
-                </div>
-                
             </div>
             <button id="carousel-next-button" class="carousel-next-button"></button>
         </div>
     </section>
-    
     <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
-        const scrollingWrapper = $(".scrolling-wrapper");
+        const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+        var cardnum = 1;
         // Make an AJAX request to fetch the text files
-        $.ajax({
-            url: "/assets/projects/", // Update the URL as per your folder structure
-            success: function(data) {
-                // Iterate over the files
-                $(data).find("a[href$='.txt']").each(function() {
-                    const filename = $(this).attr("href");
-                    // Extract the name of the file without extension
-                    const filenameWithoutExtension = filename.split('/').pop().split(".").slice(0, -1).join(".");
-                    // Make another AJAX request to get the content of each text file
-                    $.ajax({
-                        url: filename,
-                        dataType: "text",
-                        success: function(fileContent) {
-                            // Create a new card element
-                            const card = $("<div>").addClass("card");
-                                
-                            // Set the content of the card to the text file content
-                            // card.text(fileContent);
+        fetch("assets/projects/")
+            .then(response => response.text())
+            .then(data => {
+                const path = "assets/projects/";
+                const partes = path.split('/');
+                const ultimaPasta = partes[partes.length - 1];
+                console.log(ultimaPasta);
 
-                            // Create a header text with class and set it to the filename
-                            const headerText = $("<h2>").addClass("card-header").text(filenameWithoutExtension);
-                    
-                            // Set the content of the card to the text file content
-                            const contentText = $("<p>").addClass("card-content").text(fileContent);
-                            
-                            // Append the header and content to the card
-                            card.append(headerText, contentText);
-                            
-                            // Append the card to the scrolling wrapper
-                            scrollingWrapper.append(card);
-                        }
-                    });
-                });
+                // Convert the response HTML string into a DOM object
+                const parser = new DOMParser();
+                const htmlDocument = parser.parseFromString(data, "text/html");
+
+                const listaUl = htmlDocument.querySelector("ul");  // seleciona a lista ul
+                const elementosLi = listaUl.querySelectorAll("li");  // selecione todos os elementos li dentro da lista ul
+                const numeroDeLi = elementosLi.length - 1;  //número de elementos li
+                console.log(numeroDeLi)
+
+                for (var i = 1; i <= numeroDeLi; i++) {
+                // Create a new card element
+                const card = document.createElement("div");
+                card.classList.add("card", "card" + cardnum);
+                cardnum++;
+
+                // create image-container div
+                const imageContainer = document.createElement("div");
+                imageContainer.classList.add("imagecontainer", "projeto" + i);
+                imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img" + 1 + ".jpg)";
+
+                // Create a header text with class
+                const headerText = document.createElement("h2");
+                headerText.classList.add("card-header");
+
+                // Set the content of the header text
+                var filePath2 = "assets/projects/projeto" + i + "/titulo.txt";
+                fetch(filePath2)
+                    .then(response => response.text())
+                    .then(texto => {
+                        headerText.innerText = texto;
+                    })
+                    .catch(error => console.error('Erro ao carregar o arquivo de texto:', error));
+
+                // Append the header text to the image container
+                imageContainer.appendChild(headerText);
+
+                // Append the image container to the card
+                card.appendChild(imageContainer);
+
+                // Set the content of the card to the text file content
+                const contentText = document.createElement("p");
+                contentText.classList.add("card-content");
+                var filePath = "assets/projects/projeto" + i + "/descricao.txt";
+                fetch(filePath)
+                    .then(response => response.text())
+                    .then(texto => {
+                        contentText.textContent = texto;
+                    })
+                    .catch(error => console.error('Erro ao carregar o arquivo de texto:', error));
+
+                // Append the content text to the card
+                card.appendChild(contentText);
+
+                // Append the card to the scrolling wrapper
+                scrollingWrapper.appendChild(card);
             }
+
+
+
+        $(document).ready(function() {
+        /* muda as imagens quando essas são clicadas */
+        var aux = 2; //começa na primeira imagem entao deve ir para a 2
+        const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
+
+        imagecontainers.forEach(imageContainer => {
+            imageContainer.addEventListener('click', function() {
+                if (aux == 4) {
+                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+            }
+            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+            this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+            });
         });
+    });
+
+    });
     </script>
-    
     <script> //FUNCIONAR BOTOES
         $(document).ready(function() {
                 const prevButton = document.getElementById("carousel-prev-button");
@@ -210,8 +219,6 @@
 
         });
     </script>
-
-
     <!--artigos--------------------------------------------------------->
     <section id="artigos">
         <h1>Publicações</h1>
@@ -245,7 +252,6 @@
     });
     </script>
     </section>
-
     <!--equipe---------------------------------------------------------->
     <section class="equipe">
         <h1>Equipe</h1>
@@ -398,9 +404,6 @@
             </div>
         </div>
     </section>
-
-
-
     <!------ CENA 3D --------------------------------------------------->
     <script type="module">
         import * as THREE from './js/three.module.js';
@@ -434,5 +437,29 @@ if (!isMobileDevice()) {
 }
 
     </script>
+    <!------ FOOTER ---------------------------------------------------->
+    <footer>
+        <div class="fup">
+            <img src="assets/logos/navbar_logo.svg">
+            <a>Página Inicial</a>
+            <a>Sobre Nós</a>
+            <a>Projetos</a>
+            <a>Artigos</a>
+            <a>Equipe</a>
+            <a>Contato</a>
+            <a>UFPR</a>
+        </div>
+        <div class="fdown">
+            <div class="fleft">
+                <div>Copyright © 2024 Laboratório de Metaverso da UFPR</div>
+                <div class="fd"><img src="assets/logos/language.svg"><a>Portugues</a></div>
+            </div>
+            <div class="logos">
+                <img src="assets/logos/Intagram.svg">
+                <img src="assets/logos/ln2.svg">
+                <img src="assets/logos/ufpr.svg">
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
