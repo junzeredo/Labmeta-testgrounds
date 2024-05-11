@@ -109,7 +109,7 @@
         const scrollingWrapper = document.querySelector(".scrolling-wrapper");
         var cardnum = 1;
         // Make an AJAX request to fetch the text files
-        fetch("assets/projects/")
+        fetch("assets/projects")
             .then(response => response.text())
             .then(data => {
                 const path = "assets/projects/";
