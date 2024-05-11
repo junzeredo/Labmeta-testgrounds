@@ -93,13 +93,13 @@ h1{
     animation: appear_wscroll;
     animation-timeline: view();
 }
+.navcel{
+    display: none;
+}
 .navpc{
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-.navcel{
-    display: none;
 }
 
 .navbar_logo{
@@ -518,6 +518,9 @@ footer {
         display: flex;
         width: 100%;
         justify-content: space-around;
+    }
+    .b1{
+        display: none;
     }
 
     .navcel img:nth-of-type(1) {
