@@ -213,7 +213,8 @@ h1{
     scroll-behavior: smooth;
     overflow-y: auto;
     flex-wrap: nowrap;
-    width: 100%;
+    width: 100vw;
+    width: 100lvw;
     border-radius: var(--edge-roundness);
   }
 .card{
