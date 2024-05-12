@@ -172,22 +172,44 @@
             card.appendChild(infoButton);
         }
 
-             /* muda as imagens quando essas são clicadas */
-     var aux = 2; //começa na primeira imagem entao deve ir para a 2
-        const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
+            /* muda as imagens quando essas são clicadas */
+            var aux = 2; //começa na primeira imagem entao deve ir para a 2
+            const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
 
-        imagecontainers.forEach(imageContainer => {
-            imageContainer.addEventListener('click', function() {
-                if (aux == 4) {
-                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-            }
-            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-            this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+            imagecontainers.forEach(imageContainer => {
+                imageContainer.addEventListener('click', function() {
+                    if (aux == 4) {
+                    aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                }
+                aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+                });
             });
+
+            const prevButton = document.getElementById("carousel-prev-button");
+        const nextButton = document.getElementById("carousel-next-button");
+
+        // Verifica se os elementos existem antes de tentar acessar suas propriedades
+        if (prevButton && nextButton && scrollingWrapper) {
+            const card = document.querySelector(".card");
+            const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+            prevButton.addEventListener("click", function() {
+                scrollingWrapper.scrollBy({
+                    left: -(cardWidth),
+                    behavior: "smooth"
+                });
+            });
+
+            nextButton.addEventListener("click", function() {
+                scrollingWrapper.scrollBy({
+                    left: cardWidth,
+                    behavior: "smooth"
+                });
+            });
+        }
         });
     });
-
-});
 
     </script>
     <script> //FUNCIONAR BOTOES
