@@ -31,6 +31,17 @@ body{
     color: var(--lm_white);
 }
 
+/* Track */
+::-webkit-scrollbar-track { 
+    border-radius: 100%;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--lm_white); 
+    border-radius: 100%;
+  }
+
 
 /* -------section margins------- */
 section{
@@ -218,6 +229,7 @@ h1{
     flex-wrap: nowrap;
     width: 100%;
     width: 100svw;
+    height: 100%;
     border-radius: var(--edge-roundness);
   }
 .card{
