@@ -212,31 +212,6 @@
     });
 
     </script>
-    <script> //FUNCIONAR BOTOES
-        $(document).ready(function() {
-                const prevButton = document.getElementById("carousel-prev-button");
-                const nextButton = document.getElementById("carousel-next-button");
-                const scrollingWrapper = document.querySelector(".scrolling-wrapper");
-
-                const card = document.querySelector(".card");
-                const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
-
-                prevButton.addEventListener("click", function() {
-                    scrollingWrapper.scrollBy({
-                        left: -(cardWidth),
-                        behavior: "smooth"
-                    });
-                });
-
-                nextButton.addEventListener("click", function() {
-                    scrollingWrapper.scrollBy({
-                        left: cardWidth,
-                        behavior: "smooth"
-                    });
-                });
-
-        });
-    </script>
     <!--artigos--------------------------------------------------------->
     <section id="artigos">
         <h1>Publicações</h1>
