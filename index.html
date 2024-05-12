@@ -31,18 +31,18 @@
     <!--barra de navegacao---------------------------------------------->
     <header class="nav_principal">
         <div class="navcel">
-            <img src="assets/logos/navbar_logo.svg">
+            <img src="assets/logos/logovertical.svg">
             <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
         </div>
         <div class="navpc">
             <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
             <nav class="barra_de_nav b2">
                 <ul>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="">Sobre Nós</a></li>
+                    <li><a href="">Projetos</a></li>
                     <li><a href="">Eventos</a></li>
-                    <li><a href="#artigos">Artigos</a></li>
-                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="">Artigos</a></li>
+                    <li><a href="">Equipe</a></li>
                     <li><a href="">Contato</a></li>
                 </ul>
             </nav>
@@ -78,11 +78,11 @@
                 <div class="container" style="gap: 4vw;">
                     <div style="flex: 1; margin-top: 50px;">
                         <p id="sobrenos_1000plus">1000+</p>
-                        <p style="font-size: 22px; color: #4BDBAB;">pessoas impactadas com nossas demonstrações</p>
+                        <p style="font-size: 24px; color: #4BDBAB;">pessoas impactadas com nossas demonstrações</p>
                     </div>
                     <div style="flex: 1;">
                         <p id="sobrenos_10plus">10+</p>
-                        <p style="font-size: 22px; color: #00A7E1;">artigos publicados</p>
+                        <p style="font-size: 24px; color: #00A7E1;">artigos publicados</p>
                     </div>
                 </div>
             </div>
@@ -105,116 +105,99 @@
             <button id="carousel-next-button" class="carousel-next-button"></button>
         </div>
     </section>
-    <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
-     const scrollingWrapper = document.querySelector(".scrolling-wrapper");
-           $(document).ready(function(){
-    var conteudoDoArquivo;
+    <script> 
+    //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
+    $(document).ready(function(){
+        var conteudoDoArquivo;
+        const scrollingWrapper = document.querySelector(".scrolling-wrapper");
 
-    $.get('assets/projects/qnt.txt', function(data, status) {
-        conteudoDoArquivo = parseInt(data);
-        console.log(conteudoDoArquivo); // Exibe o conteúdo do arquivo convertido para inteiro
+        $.get('assets/projects/qnt.txt', function(data, status) {
+            conteudoDoArquivo = parseInt(data);
 
-        for (var i = 1; i <= conteudoDoArquivo; i++) {
-            // Create a new card element
-            const card = document.createElement("div");
-            card.classList.add("card", "card" + i);
+            for (var i = 1; i <= conteudoDoArquivo; i++) {
+                // Create a new card element
+                const card = document.createElement("div");
+                card.classList.add("card", "card" + i);
 
-            // create image-container div
-            const imageContainer = document.createElement("div");
-            imageContainer.classList.add("imagecontainer", "projeto" + i);
-            imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img1.jpg)";
+                // create image-container div
+                const imageContainer = document.createElement("div");
+                imageContainer.classList.add("imagecontainer", "projeto" + i);
+                imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img1.jpg)";
 
-            // create gradient overlay for the image
-            const gradientOverlay = document.createElement("div");
-            gradientOverlay.classList.add("imagecontainer-overlay");
+                // Create a header text with class
+                const headerText = document.createElement("h2");
+                headerText.classList.add("card-header");
 
-            // create button
-            const infoButton = document.createElement("button");
-            infoButton.classList.add("info-button");
-            infoButton.textContent = "Mais Informações";
+                // Carrega o título do projeto
+                $.get('assets/projects/projeto' + i + '/titulo.txt', function(data, status) {
+                    const titulo = data;
+                    headerText.innerText = titulo;
+                });
 
-            // Create a header text with class
-            const headerText = document.createElement("h2");
-            headerText.classList.add("card-header");
+                // Append the header text to the image container
+                imageContainer.appendChild(headerText);
 
-            // Carrega o título do projeto
-            $.get('assets/projects/projeto' + i + '/titulo.txt', function(data, status) {
-                const titulo = data;
-                headerText.textContent = titulo;
-            });
+                // Append the image container to the card
+                card.appendChild(imageContainer);
 
-            // Append the header text to the image container
-            gradientOverlay.appendChild(headerText);
+                // Set the content of the card to the text file content
+                const contentText = document.createElement("p");
+                contentText.classList.add("card-content");
 
-            // Append overlay to the image container
-            imageContainer.appendChild(gradientOverlay);
+                // Carrega a descrição do projeto
+                $.get('assets/projects/projeto' + i + '/descricao.txt', function(data, status) {
+                    const descricao = data;
+                    contentText.textContent = descricao;
+                });
 
-            // Append the image container to the card
-            card.appendChild(imageContainer);
+                // Append the content text to the card
+                card.appendChild(contentText);
 
-            // Set the content of the card to the text file content
-            const contentText = document.createElement("p");
-            contentText.classList.add("card-content");
-
-            // Carrega a descrição do projeto
-            $.get('assets/projects/projeto' + i + '/descricao.txt', function(data, status) {
-                const descricao = data;
-                contentText.textContent = descricao;
-            });
-
-            // Append the content text to the card
-            card.appendChild(contentText);
-
-            // Append the card to the scrolling wrapper
-            scrollingWrapper.appendChild(card);
-
-            // Append more info button to the card
-            card.appendChild(infoButton);
-        }
+                // Append the card to the scrolling wrapper
+                scrollingWrapper.appendChild(card);
+            }
 
              /* muda as imagens quando essas são clicadas */
-     var aux = 2; //começa na primeira imagem entao deve ir para a 2
-        const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
+            var aux = 2; //começa na primeira imagem entao deve ir para a 2
+            const imagecontainers = document.querySelectorAll('.imagecontainer'); //div com fundo img
 
-        imagecontainers.forEach(imageContainer => {
-            imageContainer.addEventListener('click', function() {
-                if (aux == 4) {
-                aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
-            }
-            aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
-            this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+            imagecontainers.forEach(imageContainer => {
+                imageContainer.addEventListener('click', function() {
+                    if (aux == 4) {
+                    aux = 0; //podem ter 4 imagens, entao retorna para a imagem 0 (n existe)
+                }
+                aux++; //vai para a proxima imagem e possibilita a img 0 virar 1
+                this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
+                });
             });
+
+            const prevButton = document.getElementById("carousel-prev-button");
+        const nextButton = document.getElementById("carousel-next-button");
+
+        // Verifica se os elementos existem antes de tentar acessar suas propriedades
+        if (prevButton && nextButton && scrollingWrapper) {
+            const card = document.querySelector(".card");
+            const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
+
+            prevButton.addEventListener("click", function() {
+                scrollingWrapper.scrollBy({
+                    left: -(cardWidth),
+                    behavior: "smooth"
+                });
+            });
+
+            nextButton.addEventListener("click", function() {
+                scrollingWrapper.scrollBy({
+                    left: cardWidth,
+                    behavior: "smooth"
+                });
+            });
+        }
         });
     });
 
-});
+</script>
 
-    </script>
-    <script> //FUNCIONAR BOTOES
-        $(document).ready(function() {
-                const prevButton = document.getElementById("carousel-prev-button");
-                const nextButton = document.getElementById("carousel-next-button");
-                const scrollingWrapper = document.querySelector(".scrolling-wrapper");
-
-                const card = document.querySelector(".card");
-                const cardWidth = card.offsetWidth + parseFloat(window.getComputedStyle(card).marginRight);
-
-                prevButton.addEventListener("click", function() {
-                    scrollingWrapper.scrollBy({
-                        left: -(cardWidth),
-                        behavior: "smooth"
-                    });
-                });
-
-                nextButton.addEventListener("click", function() {
-                    scrollingWrapper.scrollBy({
-                        left: cardWidth,
-                        behavior: "smooth"
-                    });
-                });
-
-        });
-    </script>
     <!--artigos--------------------------------------------------------->
     <section id="artigos">
         <h1>Publicações</h1>
@@ -249,7 +232,7 @@
     </script>
     </section>
     <!--equipe---------------------------------------------------------->
-    <section class="equipe" id="equipe">
+    <section class="equipe">
         <h1>Equipe</h1>
         <hr class="h1_divider">
 
@@ -437,21 +420,23 @@ if (!isMobileDevice()) {
     <footer>
         <div class="fup">
             <img src="assets/logos/navbar_logo.svg">
-            <a href="">Página Inicial</a>
-            <a href="">Sobre Nós</a>
-            <a href="">Projetos</a>
-            <a href="">Artigos</a>
-            <a href="">Equipe</a>
-            <a href="">Contato</a>
-            <a href="">UFPR</a>
+            <a>Página Inicial</a>
+            <a>Sobre Nós</a>
+            <a>Projetos</a>
+            <a>Artigos</a>
+            <a>Equipe</a>
+            <a>Contato</a>
+            <a>UFPR</a>
         </div>
         <div class="fdown">
             <div class="fleft">
+                <div>Copyright © 2024 Laboratório de Metaverso da UFPR</div>
                 <div class="fd"><img src="assets/logos/language.svg"><a>Portugues</a></div>
             </div>
             <div class="logos">
-                <a href="https://www.instagram.com/labmeta.ufpr/"><img src="assets/logos/Intagram.svg"></a>
-                <a href="https://www.linkedin.com/company/laborat%C3%B3rio-de-metaverso/"><img href="" src="assets/logos/ln2.svg"></a>
+                <img src="assets/logos/Intagram.svg">
+                <img src="assets/logos/ln2.svg">
+                <img src="assets/logos/ufpr.svg">
             </div>
         </div>
     </footer>
