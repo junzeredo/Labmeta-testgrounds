@@ -37,13 +37,13 @@ body{
 /* Track */
 ::-webkit-scrollbar-track { 
     border-radius: 100%;
-  }
+}
    
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: var(--lm_white); 
     border-radius: 100%;
-  }
+}
 
 
 /* -------section margins------- */
@@ -446,7 +446,7 @@ h1{
 }
 
 
-/* footer */
+/* --------footer-------- */
 
 footer {
     display: flex;
@@ -603,7 +603,10 @@ footer {
         height: 1.5em;
     }
 
-
+    .fup img {
+        margin-bottom: 2%;
+        width: 40vw;
+    }
     .carousel-next-button, .carousel-prev-button{
         display: none;
     }
