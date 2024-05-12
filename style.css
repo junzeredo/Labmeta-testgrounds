@@ -169,34 +169,28 @@ h1{
 
 
 /* -------sobre------- */
-.container{
+.container {
     display: flex;
     align-items: center;
-    align-content: center;
     flex-wrap: wrap;
-    flex-direction: col;
-    gap: 2 vw;
+    gap: 2vw;
     align-self: stretch;
 }
-.text_box{
+
+.text_box {
     overflow-wrap: break-word;
-    text-wrap: balance;
     inline-size: 50%;
-    flex: 1;
+    flex: 1.618;
     padding-right: 4vw;
     padding-bottom: 50px;
-    min-width: 250px;
 }
-.video{
-    display: flex;
-    flex-wrap: wrap;
+
+.video {
     flex: 1.618;
-    display: block;
     border-radius: var(--edge-roundness);
-    animation: appear_wscroll;
-    animation-timeline: view();
 }
-.video video{
+
+.video video {
     border-radius: var(--edge-roundness);
     min-width: 400px;
     max-width: 100%;
@@ -206,12 +200,14 @@ h1{
     font-weight: 700;
     font-style: italic;
     color: var(--lm_green);
+    flex: auto;
 }
 #sobrenos_10plus{
     font-size: 48px;
     font-weight: 700;
     font-style: italic;
-    color: var(--lm_blue)
+    color: var(--lm_blue);
+    flex: auto;
 }
 
 /* --------projetos-------- */
