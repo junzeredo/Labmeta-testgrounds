@@ -475,10 +475,15 @@ footer {
 .fup a {
     text-align: center;
     line-height: normal;
+    text-decoration: none;
 }
 
 .fup a:hover {
     text-decoration-line: underline;
+}
+
+.fup a::after {
+    color: var(--lm_purple);
 }
 
 .fdown {
