@@ -31,18 +31,18 @@
     <!--barra de navegacao---------------------------------------------->
     <header class="nav_principal">
         <div class="navcel">
-            <img src="assets/logos/logovertical.svg">
+            <img src="assets/logos/navbar_logo.svg">
             <img id="sanduiche" src="assets/logos/menu_sanduiche.svg">
         </div>
         <div class="navpc">
             <img class="navbar_logo" src="assets/logos/navbar_logo.svg" alt="logo LabMeta">
             <nav class="barra_de_nav b2">
                 <ul>
-                    <li><a href="">Sobre Nós</a></li>
-                    <li><a href="">Projetos</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
                     <li><a href="">Eventos</a></li>
-                    <li><a href="">Artigos</a></li>
-                    <li><a href="">Equipe</a></li>
+                    <li><a href="#artigos">Artigos</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
                     <li><a href="">Contato</a></li>
                 </ul>
             </nav>
@@ -124,6 +124,15 @@
             imageContainer.classList.add("imagecontainer", "projeto" + i);
             imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img1.jpg)";
 
+            // create gradient overlay for the image
+            const gradientOverlay = document.createElement("div");
+            gradientOverlay.classList.add("imagecontainer-overlay");
+
+            // create button
+            const infoButton = document.createElement("button");
+            infoButton.classList.add("info-button");
+            infoButton.textContent = "Mais Informações";
+
             // Create a header text with class
             const headerText = document.createElement("h2");
             headerText.classList.add("card-header");
@@ -131,11 +140,14 @@
             // Carrega o título do projeto
             $.get('assets/projects/projeto' + i + '/titulo.txt', function(data, status) {
                 const titulo = data;
-                headerText.innerText = titulo;
+                headerText.textContent = titulo;
             });
 
             // Append the header text to the image container
-            imageContainer.appendChild(headerText);
+            gradientOverlay.appendChild(headerText);
+
+            // Append overlay to the image container
+            imageContainer.appendChild(gradientOverlay);
 
             // Append the image container to the card
             card.appendChild(imageContainer);
@@ -155,6 +167,9 @@
 
             // Append the card to the scrolling wrapper
             scrollingWrapper.appendChild(card);
+
+            // Append more info button to the card
+            card.appendChild(infoButton);
         }
 
              /* muda as imagens quando essas são clicadas */
@@ -234,7 +249,7 @@
     </script>
     </section>
     <!--equipe---------------------------------------------------------->
-    <section class="equipe">
+    <section class="equipe" id="equipe">
         <h1>Equipe</h1>
         <hr class="h1_divider">
 
@@ -422,7 +437,7 @@ if (!isMobileDevice()) {
     <footer>
         <div class="fup">
             <img src="assets/logos/navbar_logo.svg">
-            <a>Página Inicial</a>
+            <a href="">Página Inicial</a>
             <a>Sobre Nós</a>
             <a>Projetos</a>
             <a>Artigos</a>
@@ -432,13 +447,11 @@ if (!isMobileDevice()) {
         </div>
         <div class="fdown">
             <div class="fleft">
-                <div>Copyright © 2024 Laboratório de Metaverso da UFPR</div>
                 <div class="fd"><img src="assets/logos/language.svg"><a>Portugues</a></div>
             </div>
             <div class="logos">
-                <img src="assets/logos/Intagram.svg">
-                <img src="assets/logos/ln2.svg">
-                <img src="assets/logos/ufpr.svg">
+                <a href="https://www.instagram.com/labmeta.ufpr/"><img src="assets/logos/Intagram.svg"></a>
+                <a href="https://www.linkedin.com/company/laborat%C3%B3rio-de-metaverso/"><img href="" src="assets/logos/ln2.svg"></a>
             </div>
         </div>
     </footer>
