@@ -106,73 +106,59 @@
         </div>
     </section>
     <script> //ADICIONA CARDS PARA CADA TXT EM ASSETS/PROJECTS
-        const scrollingWrapper = document.querySelector(".scrolling-wrapper");
-        var cardnum = 1;
-        // Make an AJAX request to fetch the text files
-        fetch("assets/projects")
-            .then(response => response.text())
-            .then(data => {
-                const path = "assets/projects";
-                const partes = path.split('/');
-                const ultimaPasta = partes[partes.length - 1];
-                console.log(ultimaPasta);
+     const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+           $(document).ready(function(){
+    var conteudoDoArquivo;
 
-                // Convert the response HTML string into a DOM object
-                const parser = new DOMParser();
-                const htmlDocument = parser.parseFromString(data, "text/html");
+    $.get('assets/projects/qnt.txt', function(data, status) {
+        conteudoDoArquivo = parseInt(data);
+        console.log(conteudoDoArquivo); // Exibe o conteúdo do arquivo convertido para inteiro
 
-                const listaUl = htmlDocument.querySelector("ul");  // seleciona a lista ul
-                const elementosLi = listaUl.querySelectorAll("li");  // selecione todos os elementos li dentro da lista ul
-                const numeroDeLi = elementosLi.length - 1;  //número de elementos li
-                console.log(numeroDeLi)
+        for (var i = 1; i <= conteudoDoArquivo; i++) {
+            // Create a new card element
+            const card = document.createElement("div");
+            card.classList.add("card", "card" + i);
 
-                for (var i = 1; i <= numeroDeLi; i++) {
-                // Create a new card element
-                const card = document.createElement("div");
-                card.classList.add("card", "card" + cardnum);
-                cardnum++;
+            // create image-container div
+            const imageContainer = document.createElement("div");
+            imageContainer.classList.add("imagecontainer", "projeto" + i);
+            imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img1.jpg)";
 
-                // create image-container div
-                const imageContainer = document.createElement("div");
-                imageContainer.classList.add("imagecontainer", "projeto" + i);
-                imageContainer.style.backgroundImage = "url(assets/projects/projeto" + i + "/img" + 1 + ".jpg)";
+            // Create a header text with class
+            const headerText = document.createElement("h2");
+            headerText.classList.add("card-header");
 
-                // Create a header text with class
-                const headerText = document.createElement("h2");
-                headerText.classList.add("card-header");
+            // Carrega o título do projeto
+            $.get('assets/projects/projeto' + i + '/titulo.txt', function(data, status) {
+                const titulo = data;
+                headerText.innerText = titulo;
+            });
 
-                // Set the content of the header text
-                var filePath2 = "assets/projects/projeto" + i + "/titulo.txt";
-                fetch(filePath2)
-                    .then(response => response.text())
-                    .then(texto => {
-                        headerText.innerText = texto;
-                    })
-                    .catch(error => console.error('Erro ao carregar o arquivo de texto:', error));
+            // Append the header text to the image container
+            imageContainer.appendChild(headerText);
 
-                // Append the header text to the image container
-                imageContainer.appendChild(headerText);
+            // Append the image container to the card
+            card.appendChild(imageContainer);
 
-                // Append the image container to the card
-                card.appendChild(imageContainer);
+            // Set the content of the card to the text file content
+            const contentText = document.createElement("p");
+            contentText.classList.add("card-content");
 
-                // Set the content of the card to the text file content
-                const contentText = document.createElement("p");
-                contentText.classList.add("card-content");
-                var filePath = "assets/projects/projeto" + i + "/descricao.txt";
-                fetch(filePath)
-                    .then(response => response.text())
-                    .then(texto => {
-                        contentText.textContent = texto;
-                    })
-                    .catch(error => console.error('Erro ao carregar o arquivo de texto:', error));
+            // Carrega a descrição do projeto
+            $.get('assets/projects/projeto' + i + '/descricao.txt', function(data, status) {
+                const descricao = data;
+                contentText.textContent = descricao;
+            });
 
-                // Append the content text to the card
-                card.appendChild(contentText);
+            // Append the content text to the card
+            card.appendChild(contentText);
 
-                // Append the card to the scrolling wrapper
-                scrollingWrapper.appendChild(card);
-            }
+            // Append the card to the scrolling wrapper
+            scrollingWrapper.appendChild(card);
+        }
+    });
+});
+
 
 
 
@@ -190,8 +176,6 @@
             this.style.backgroundImage = "url(assets/projects/" + this.classList.item(this.classList.length - 1) + "/img" + aux + ".jpg)";
             });
         });
-    });
-
     });
     </script>
     <script> //FUNCIONAR BOTOES
