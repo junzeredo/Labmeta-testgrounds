@@ -185,7 +185,7 @@ h1{
     flex: 1;
     padding-right: 4vw;
     padding-bottom: 50px;
-    min-width: 400px;
+    min-width: 250px;
 }
 .video{
     display: flex;
