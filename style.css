@@ -22,8 +22,8 @@
 }
 /* -------fundo------- */
 body{
-    overflow-x: hidden;
     background: var(--lm_black);
+    overflow-x: hidden;
 }
 
 ::selection {
@@ -46,8 +46,9 @@ body{
 
 /* -------section margins------- */
 section{
+    overflow-x: hidden;
     /* cada section (sobre, eventos, projetos, artigos, membros, etc...) vai conter margens de 16vh 4vw */
-    margin: 16vh 4vw;
+    padding: 16vh 4vw;
     animation: appear_wscroll;
     animation-timeline: view();
 }
@@ -88,8 +89,6 @@ h1{
     justify-content: center;
     margin-top: 50px;
     top: 0;
-    width: 100%;
-    width: 100svw;
     min-height: 100px;
 }
 .nav_landing_page a{
@@ -156,9 +155,9 @@ h1{
 
 /* --------cena 3D-------- */
 #test{
+    align-content: center;
+    align-items: center;
     display: block;
-    width: 100%;
-    width: 100svw;
     height: 100%;
     padding: 0;
     margin: 0;
@@ -487,8 +486,6 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    width: 100svw;
     color: var(--Brand-Colors-VR-Purple, #812CE5);
     font-size: 20px;
     line-height: normal;
@@ -512,7 +509,7 @@ footer {
 .fleft {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    /* width: 50%; */
     align-items: center;
     justify-content: space-between;
 }
@@ -529,7 +526,9 @@ footer {
 
     
 @media (max-width: 895px) {
-    
+    body{
+        overflow-x: hidden;
+    }
     /* header para celular */
     .navpc{
         display: none;
@@ -548,13 +547,14 @@ footer {
     .barra_de_nav{
         display: flex;
         width: 100%;
+        width: 100svw;
         height: 100%;
     }
     .navbar_logo{
         height: 1.5em;
         cursor: pointer;
         box-sizing: border-box;
-        margin-left: 4vw;
+        /* margin-left: 4vw; */
     }
     .barra_de_nav ul{
         display: flex;
@@ -581,6 +581,7 @@ footer {
     .navcel{
         display: flex;
         width: 100%;
+        width: 100svw;
         justify-content: space-around;
     }
     .b1{
@@ -597,61 +598,6 @@ footer {
         height: 1.5em;
     }
 
-    /* footer para celular */
-
-    footer {
-        height: 400px;
-    }
-    
-    .fup {
-        height: 80%;
-        padding: 50px 0px 100px 0px;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-shrink: 0;
-        margin-bottom: 10%;
-    }
-    
-    
-    .fup img {
-        width: 40vw;
-        margin-bottom: 1%;
-    }
-    
-    .fdown {
-        flex-direction: column-reverse;
-        align-items: start;
-        font-size: 0.8em;
-    }
-    
-    .fd {
-        font-size: 0.8em;
-    }
-    
-    .fleft {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        width: 100svw;
-        align-items: start;
-        justify-content: center;
-    }
-    
-    
-    .logos {
-        display: inline-flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        align-items: flex-end;
-        gap: 2vw;
-        height: 5em;
-        align-items: center;
-    }
-
-    .logos img{
-        height: 50%;
-    }
 
     .carousel-next-button, .carousel-prev-button{
         display: none;
