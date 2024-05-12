@@ -22,6 +22,7 @@
 }
 /* -------fundo------- */
 body{
+    overflow-x: hidden;
     background: var(--lm_black);
 }
 
@@ -528,7 +529,7 @@ footer {
 
     
 @media (max-width: 895px) {
-
+    
     /* header para celular */
     .navpc{
         display: none;
