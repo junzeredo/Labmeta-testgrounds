@@ -77,6 +77,7 @@ h1{
     margin-top: 50px;
     top: 0;
     width: 100%;
+    width: 100svw;
     min-height: 100px;
 }
 .nav_landing_page a{
@@ -92,6 +93,7 @@ h1{
     align-items: center;
     top: 0;
     width: 100%;
+    width: 100svw;
     height: 80px;
     background: var(--lm_black 70);
     backdrop-filter: blur(40px);
@@ -144,6 +146,7 @@ h1{
 #test{
     display: block;
     width: 100%;
+    width: 100svw;
     height: 100%;
     padding: 0;
     margin: 0;
@@ -213,8 +216,8 @@ h1{
     scroll-behavior: smooth;
     overflow-y: auto;
     flex-wrap: nowrap;
-    width: 100vw;
-    width: 100lvw;
+    width: 100%;
+    width: 100svw;
     border-radius: var(--edge-roundness);
   }
 .card{
@@ -472,6 +475,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    width: 100svw;
     color: var(--Brand-Colors-VR-Purple, #812CE5);
     font-size: 20px;
     line-height: normal;
@@ -519,6 +523,7 @@ footer {
         position: absolute;
         flex-direction: column;
         width: 100%;
+        width: 100svw;
         height: 500px;
         top: 100%;
         background: linear-gradient(180deg, rgba(71, 71, 71, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%);
@@ -542,6 +547,7 @@ footer {
         display: flex;
         flex-direction: column;
         width: 100%;
+        width: 100svw;
         height: 100%;
         text-align: center;
         gap: 17.5px;
@@ -614,6 +620,7 @@ footer {
         display: flex;
         flex-direction: column;
         width: 100%;
+        width: 100svw;
         align-items: start;
         justify-content: center;
     }
